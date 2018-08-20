@@ -7,7 +7,7 @@
 	5. namedtuple:构建有名字的元组和有名字的类
 	6. ChainMap容纳多个映射对象的容器
 
-### deque：长度固定的双向队列
+#### deque：长度固定的双向队列
 * deque(maxlen=N)创建一个长度为N的固定队列的双向队列。
 * 队列满时在此端添加n个值会同时删除彼端的n个值。
 ```
@@ -34,7 +34,7 @@ deque([33, 22, 11, -1, 3], maxlen=5)
 * len(d)=d.maxlen时，开始达到上限，增加会导致另一侧的删除。
 * extendleft()把其中的元素逐个相加到左侧。
 
-### Counter: 计数器
+#### Counter: 计数器
 * 以键值对的形式储存，元素为key，计数为value。
 
 * 创建
@@ -172,7 +172,7 @@ c += Counter()
 #移除0和负值
 ``` 
 
-### defaultdict:不会因为键值不存在而报错
+#### defaultdict:不会因为键值不存在而报错
 * dict中，若访问的key不存在，则KeyError。
 * 用defaultdict则会返回一个默认值。
 ```
@@ -195,7 +195,7 @@ defaultdict(<class 'list'>, {'a': [1, 2], 'b': [4]})
 [('i', 4), ('m', 1), ('p', 2), ('s', 4)]
 ```
 
-### OrderDict:有序的dict
+#### OrderDict:有序的dict
 * OrderDict的key会严格按照添加顺序保持。
 ```
 >>> from collections import OrderedDict
@@ -215,7 +215,7 @@ spam 3
 grok 4
 ```
 
-### namedtuple:构建有名字的元组和有名字的类
+#### namedtuple:构建有名字的元组和有名字的类
 * 创建一个具名元组需要两个参数，一个是类名，另一个是类的各个字段的名字。后者可以是由数个字符串组成的可迭代对象，或者是由空格分隔开的字段名组成的字符串。
 ```
 >>> from collections import namedtuple
@@ -232,7 +232,7 @@ City(name='Tokyo', country='JP', population=36.933, coordinates=(35.689722,
 'JP'
 ```
 
-### ChainMap容纳多个映射对象的容器
+#### ChainMap容纳多个映射对象的容器
 * 进行键查找操作的时候，这些对象会被当作一个整体被逐个查找，直到键被找到为止。
 * ChainMap只是简单的维护一个记录底层映射关系的列表，然后重新定义常见的字典操作来扫描这个列表。大部分的操作都可以正常的工作。
 * 如果与重复的键，那么这里会采用第一个映射中所对应的键值。 
