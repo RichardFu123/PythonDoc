@@ -192,4 +192,21 @@ def cmp_to_key(mycmp):
 ```
 
 ## 杂项
-* 待补充
+* 用locale.strxfrm()作为key方法，或者用locale.strcoll()作为比较方法可以解决一些特定地区语言的字符串排序问题。
+* reverse()方法一样有着排序稳定性。
+* 排序方法在实现的时候会优先调用被排序类的__it__()方法，所以如果不想每次排序都指定key方法或者其他参数，可以考虑直接改写__it__()方法。
+	* 这里直接通过重写__it__()方法达到了默认对比属性为年龄的效果。
+```
+>>> Student.__lt__ = lambda self, other: self.age < other.age
+>>> sorted(student_objects)
+[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+```
+
+* 之前说过，key方法所起的作用仅仅是将待排序元素逐个进行加工提取，所以key方法其实并不依赖待排序元素：
+	* 这里通过待排序元素访问获取外部储存的数据，进行了排序。
+```
+>>> students = ['dave', 'john', 'jane']
+>>> newgrades = {'john': 'F', 'jane':'A', 'dave': 'C'}
+>>> sorted(students, key=newgrades.__getitem__)
+['jane', 'dave', 'john']
+```
